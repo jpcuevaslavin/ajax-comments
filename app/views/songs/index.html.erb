@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Songs</h1>
+
+<%= render 'form', song: @song %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @songs %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Song', new_song_path %>
