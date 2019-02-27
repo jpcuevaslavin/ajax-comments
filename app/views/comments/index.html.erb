@@ -1,0 +1,46 @@
+<h1>
+  Bienvenido a mi landing!
+</h1>
+
+
+<%= form_with(model: Comment.new, local: true) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.submit :enviar %>
+<% end %>
+
+<br><br>
+<label for="">Buscar:</label>
+<input type="text" id="buscador">
+
+
+<ul id="lista">
+  <%= render @comments %>
+</ul>
+
+<iframe width="300" height="200" src="https://www.youtube.com/embed/bOsKJpCR9Fo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+<br>
+
+<script>
+  $('#buscador').keyup(function () {
+    var searchQuery = $('#buscador').val();
+    $.ajax({
+      type: "GET",
+      url: "<%= comments_path %>",
+      data: { buscador: searchQuery }
+    });
+  });
+</script>
+
+<script>
+  $("[name='commit']").click(function(event) {
+    event.preventDefault();
+    var commentContent = $("[name='comment[content]']").val();
+    $.ajax({
+      type: "POST",
+      url: "<%= comments_path %>",
+      data: { comment: { content: commentContent } }
+    });
+  })
+</script>

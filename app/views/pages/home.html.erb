@@ -1,0 +1,23 @@
+<h1 id="titulo">
+  Estamos en el HOME!
+</h1>
+
+<iframe width="300" height="200" src="https://www.youtube.com/embed/bOsKJpCR9Fo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+<input type="text" id="title">
+<button onclick="realizarLlamada()">Agregar</button>
+
+<ol id="lista">
+</ol>
+
+<script>
+  function realizarLlamada() {
+    var contenidoDelInput = $('#title').val();
+    $.ajax({
+      type: "POST",
+      url: "<%= pages_add_content_path %>",
+      data: {title: contenidoDelInput}
+    })
+    .fail(function() { alert('FALLAAAA!') })
+  };
+</script>
