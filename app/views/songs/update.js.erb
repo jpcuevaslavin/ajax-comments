@@ -1,0 +1,6 @@
+// Actualizar el registro en la tabla.
+$("#<%= @song.id %>").replaceWith("<%= j render @song %>");
+
+// Esconder el modal.
+$('#exampleModal').modal('hide');
+

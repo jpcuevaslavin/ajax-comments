@@ -14,6 +14,7 @@ class SongsController < ApplicationController
   # GET /songs/1
   # GET /songs/1.json
   def show
+    respond_to :js
   end
 
   # GET /songs/new
@@ -45,11 +46,9 @@ class SongsController < ApplicationController
   def update
     respond_to do |format|
       if @song.update(song_params)
-        format.html { redirect_to @song, notice: 'Song was successfully updated.' }
-        format.json { render :show, status: :ok, location: @song }
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @song.errors, status: :unprocessable_entity }
+        format.html { redirect_to songs_path, alert: "Error al actualizar: #{@song.errors.messages}"}
       end
     end
   end

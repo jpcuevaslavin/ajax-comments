@@ -1,7 +1,20 @@
 <tr id="<%= song.id %>">
   <td><%= song.title %></td>
   <td><%= song.artist %></td>
-  <td><%= link_to 'Show', song %></td>
+  <td><%= link_to 'Show', song, data: {remote: true} %></td>
   <td><%= link_to 'Edit', edit_song_path(song), data:{remote: true} %></td>
   <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?', remote: true } %></td>
 </tr>
+
+<script>
+  {/* $('#show').click(function() {
+    $.ajax({
+    type: "GET",
+    url: "<%= song_path(song.id) %>",
+    data: {id: song.id},
+    success: function (response) {
+      
+    }
+  });
+  }) */}
+</script>
