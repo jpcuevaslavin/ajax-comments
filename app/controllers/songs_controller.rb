@@ -23,6 +23,7 @@ class SongsController < ApplicationController
 
   # GET /songs/1/edit
   def edit
+    respond_to :js
   end
 
   # POST /songs
@@ -57,10 +58,7 @@ class SongsController < ApplicationController
   # DELETE /songs/1.json
   def destroy
     @song.destroy
-    respond_to do |format|
-      format.html { redirect_to songs_url, notice: 'Song was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    respond_to :js
   end
 
   private
